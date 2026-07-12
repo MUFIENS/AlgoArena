@@ -7,7 +7,8 @@ import InstructionPanel from './components/InstructionPanel';
 function App() {
   const [actions, setActions] = useState([]);
   const [isRunning, setIsRunning] = useState(false);
-  const [logs, setLogs] = useState([{ type: 'info', message: 'Sistem siap. Ketik kode dan tekan Jalankan Kode.' }]);
+  const [logs, setLogs] = useState([]);
+  const [showWinModal, setShowWinModal] = useState(false);
   
   const workerRef = useRef(null);
 
@@ -24,7 +25,7 @@ function App() {
       if (e.data.success) {
         setActions(e.data.actions);
         setIsRunning(true);
-        setLogs([{ type: 'info', message: 'Memulai eksekusi algoritma...', time: new Date().toLocaleTimeString() }]);
+        setLogs([{ type: 'info', message: 'Memulai eksekusi...', time: new Date().toLocaleTimeString() }]);
       } else {
         addLog('error', e.data.error);
         setIsRunning(false);
@@ -33,45 +34,57 @@ function App() {
 
     setIsRunning(false);
     setActions([]);
+    setShowWinModal(false);
     workerRef.current.postMessage(code);
   };
 
   const handleFinish = (result) => {
     setIsRunning(false);
     if (result === 'win') {
-      addLog('success', '✨ SELAMAT! Robot berhasil mencapai target!');
+      addLog('success', 'Berhasil mencapai target!');
+      setShowWinModal(true);
     } else {
-      addLog('info', 'Eksekusi kode selesai.');
+      addLog('info', 'Eksekusi selesai.');
     }
   };
 
   return (
-    <div className="flex h-screen bg-slate-950 text-slate-200 overflow-hidden font-sans">
-      {/* Panel 1: Instruksi */}
-      <div className="w-1/4 h-full hidden xl:block">
+    <div className="flex h-screen bg-[#0d1117] text-slate-300 overflow-hidden font-sans">
+      <div className="w-1/4 h-full hidden xl:block border-r border-[#30363d] bg-[#161b22]">
         <InstructionPanel />
       </div>
       
-      {/* Panel 2: Editor */}
-      <div className="flex-1 xl:w-1/3 h-full z-10">
+      <div className="flex-1 xl:w-1/3 h-full border-r border-[#30363d] z-10 bg-[#0d1117]">
         <EditorPanel onRunCode={handleRunCode} />
       </div>
 
-      {/* Panel 3: Game & Terminal */}
-      <div className="w-full xl:w-[45%] h-full flex flex-col bg-slate-900/40 relative">
-        {/* Ambient Glow */}
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-violet-600/10 rounded-full blur-3xl pointer-events-none"></div>
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-teal-600/10 rounded-full blur-3xl pointer-events-none"></div>
-
-        <div className="flex-1 p-4 lg:p-8 flex items-center justify-center relative z-10">
+      <div className="w-full xl:w-[45%] h-full flex flex-col bg-[#010409]">
+        <div className="flex-1 flex items-center justify-center p-8 relative">
           <GameCanvas 
             actions={actions} 
             isRunning={isRunning} 
             onFinish={handleFinish}
             onLog={addLog}
           />
+          
+          {/* Win Modal Overlay */}
+          {showWinModal && (
+            <div className="absolute inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
+              <div className="bg-[#161b22] border border-[#3fb950] p-8 rounded-xl shadow-[0_0_50px_rgba(63,185,80,0.2)] text-center animate-bounce-in max-w-sm w-full mx-4">
+                <div className="text-6xl mb-4">🏆</div>
+                <h2 className="text-2xl font-bold text-[#3fb950] mb-2">LEVEL SELESAI!</h2>
+                <p className="text-slate-300 mb-6 text-sm">Luar biasa! Algoritma Anda berhasil memandu robot ke target dengan sempurna.</p>
+                <button 
+                  onClick={() => setShowWinModal(false)}
+                  className="w-full py-2 bg-[#238636] hover:bg-[#2ea043] text-white rounded-md font-medium transition-colors"
+                >
+                  Tutup
+                </button>
+              </div>
+            </div>
+          )}
         </div>
-        <div className="h-56 border-t border-slate-700/50 bg-slate-950/80 backdrop-blur-xl relative z-10">
+        <div className="h-64 border-t border-[#30363d] bg-[#161b22]">
           <Terminal logs={logs} />
         </div>
       </div>

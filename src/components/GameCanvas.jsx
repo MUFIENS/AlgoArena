@@ -41,6 +41,7 @@ export default function GameCanvas({ actions, isRunning, onFinish, onLog }) {
     if (!images) return;
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
+    
     let animationId;
     
     let robotState = { ...INITIAL_ROBOT_STATE };
@@ -159,14 +160,14 @@ export default function GameCanvas({ actions, isRunning, onFinish, onLog }) {
   return (
     <div className="w-full flex justify-center items-center">
       {!images ? (
-        <div className="text-teal-400 animate-pulse font-mono tracking-widest uppercase">Memuat Aset 2D...</div>
+        <div className="text-slate-400 animate-pulse font-mono text-sm">Memuat Aset 2D...</div>
       ) : (
-        <div className="p-2 bg-slate-800/80 rounded-2xl shadow-[0_0_50px_-12px_rgba(45,212,191,0.25)] border border-slate-700/50 backdrop-blur-sm">
+        <div className="p-1 bg-[#161b22] border border-[#30363d] rounded-md shadow-sm z-10">
           <canvas
             ref={canvasRef}
             width={INITIAL_MAP[0].length * TILE_SIZE}
             height={INITIAL_MAP.length * TILE_SIZE}
-            className="block rounded-xl shadow-inner bg-slate-900"
+            className="block rounded-sm bg-[#0d1117]"
           />
         </div>
       )}

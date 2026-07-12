@@ -2,44 +2,44 @@ import React from 'react';
 
 export default function InstructionPanel() {
   return (
-    <div className="h-full bg-slate-900 border-r border-slate-700/50 p-6 overflow-auto">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-white mb-2 tracking-tight">AlgoArena</h1>
-        <div className="h-1 w-12 bg-gradient-to-r from-teal-400 to-emerald-500 rounded-full"></div>
+    <div className="h-full bg-[#161b22] p-6 overflow-auto text-slate-300">
+      <div className="mb-6 border-b border-[#30363d] pb-4">
+        <h1 className="text-2xl font-semibold text-slate-100 mb-1">AlgoArena</h1>
+        <p className="text-sm text-slate-400">Logic & Algorithm Sandbox</p>
       </div>
 
       <div className="space-y-6">
         <div>
-          <h2 className="text-xl font-semibold text-teal-400 mb-2">Level 1: Langkah Pertama</h2>
-          <p className="text-slate-300 leading-relaxed text-sm">
-            Selamat datang di arena! Tugas Anda adalah memprogram robot agar mencapai bendera (target) hijau. 
-            Hati-hati, jangan sampai menabrak tembok abu-abu!
+          <h2 className="text-lg font-medium text-slate-200 mb-2">Level 1: Langkah Pertama</h2>
+          <p className="text-slate-400 text-sm leading-relaxed">
+            Tugas Anda adalah memprogram robot agar mencapai bendera (target) hijau. 
+            Gunakan perintah di bawah ini dan hindari menabrak tembok abu-abu.
           </p>
         </div>
 
-        <div className="bg-slate-800/50 p-4 rounded-xl border border-slate-700/50 shadow-inner">
-          <h3 className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-3">Perintah Tersedia</h3>
+        <div className="bg-[#0d1117] border border-[#30363d] rounded-md p-4">
+          <h3 className="text-sm font-semibold text-slate-300 mb-4 border-b border-[#30363d] pb-2">Available Commands</h3>
           
           <ul className="space-y-4 text-sm">
             <li>
-              <code className="text-teal-300 bg-slate-900 px-2 py-1 rounded font-mono">maju()</code>
-              <p className="text-slate-400 mt-1 text-xs">Bergerak maju 1 kotak ke arah robot menghadap.</p>
+              <code className="text-[#58a6ff] bg-[#161b22] px-1.5 py-0.5 rounded font-mono border border-[#30363d]">maju()</code>
+              <p className="text-slate-400 mt-2 text-xs">Bergerak maju 1 kotak ke arah robot menghadap.</p>
             </li>
             <li>
-              <code className="text-violet-300 bg-slate-900 px-2 py-1 rounded font-mono">belokKiri()</code>
-              <p className="text-slate-400 mt-1 text-xs">Memutar arah robot 90 derajat ke kiri.</p>
+              <code className="text-[#d2a8ff] bg-[#161b22] px-1.5 py-0.5 rounded font-mono border border-[#30363d]">belokKiri()</code>
+              <p className="text-slate-400 mt-2 text-xs">Memutar arah robot 90 derajat ke kiri (berlawanan jarum jam).</p>
             </li>
             <li>
-              <code className="text-violet-300 bg-slate-900 px-2 py-1 rounded font-mono">belokKanan()</code>
-              <p className="text-slate-400 mt-1 text-xs">Memutar arah robot 90 derajat ke kanan.</p>
+              <code className="text-[#d2a8ff] bg-[#161b22] px-1.5 py-0.5 rounded font-mono border border-[#30363d]">belokKanan()</code>
+              <p className="text-slate-400 mt-2 text-xs">Memutar arah robot 90 derajat ke kanan (searah jarum jam).</p>
             </li>
           </ul>
         </div>
 
-        <div className="bg-teal-900/20 border border-teal-500/20 p-4 rounded-xl">
-          <h4 className="text-teal-400 font-semibold text-sm mb-1">💡 Tips</h4>
-          <p className="text-teal-200/70 text-xs leading-relaxed">
-            Perhatikan baik-baik arah awal robot menghadap. Baca pesan di Terminal Console jika robot gagal bergerak.
+        <div className="bg-[#1f2428] border-l-4 border-[#e3b341] p-4 rounded-r-md">
+          <h4 className="text-[#e3b341] font-semibold text-sm mb-1">Tips</h4>
+          <p className="text-slate-400 text-xs leading-relaxed">
+            Baca pesan di panel Console jika terjadi error atau robot gagal bergerak.
           </p>
         </div>
       </div>
