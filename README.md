@@ -1,16 +1,56 @@
-# React + Vite
+# 🤖 AlgoArena
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+AlgoArena adalah platform edukasi interaktif berbasis web untuk belajar pemrograman (coding) dan logika algoritma dasar. Terinspirasi dari game pemrograman robot, pengguna dapat menulis baris kode untuk mengontrol pergerakan sebuah robot di dalam arena 2D agar bisa menghindari tembok dan mencapai target (bendera hijau).
 
-Currently, two official plugins are available:
+## ✨ Fitur Utama
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **CodeMirror Integration**: Code editor kelas profesional dengan pewarnaan sintaks (*syntax highlighting*) dan penomoran baris.
+- **Web Worker Execution**: Kode pengguna dijalankan secara terisolasi di dalam *background thread* untuk mencegah *hang* atau masalah keamanan (sandbox execution).
+- **Interactive 2D Canvas**: Visualisasi pergerakan robot secara aktual dengan animasi yang mulus.
+- **Terminal Simulator**: Jendela output khusus yang mencatat setiap langkah robot, termasuk peringatan jika mencoba menabrak batas, dan pesan *error* asli (*syntax error*) jika kode yang diketik salah.
+- **Flat Professional Design**: Antarmuka bersih bergaya mode gelap (*dark mode*) layaknya *Integrated Development Environment (IDE)* asli.
 
-## React Compiler
+## 🕹️ Cara Bermain
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Tujuan utama dari game ini adalah mengontrol pergerakan robot di panel kiri (*canvas*) dengan cara mengetik instruksi pada panel editor di tengah layar. Anda dapat menggunakan perintah-perintah berikut:
 
-## Expanding the Oxlint configuration
+- `maju()`: Menggerakkan robot 1 petak ke depan (sesuai arah ia menghadap).
+- `belokKiri()`: Memutar robot 90 derajat ke arah kiri (berlawanan jarum jam).
+- `belokKanan()`: Memutar robot 90 derajat ke arah kanan (searah jarum jam).
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+**Target:** Bawa robot tepat berada di atas kotak yang berisi gambar bendera hijau tanpa menabrak tembok abu-abu!
+
+## 🚀 Instalasi & Menjalankan Lokal
+
+Pastikan Anda memiliki [Node.js](https://nodejs.org/) yang terinstal di komputer.
+
+1. **Clone repository ini:**
+   ```bash
+   git clone https://github.com/USERNAME/AlgoArena.git
+   cd AlgoArena
+   ```
+
+2. **Install semua dependensi:**
+   ```bash
+   npm install
+   ```
+
+3. **Jalankan *development server*:**
+   ```bash
+   npm run dev
+   ```
+
+4. **Buka di Browser:**
+   Kunjungi `http://localhost:5173` untuk mulai bermain dan mencoba platformnya.
+
+## 🛠️ Teknologi yang Digunakan
+
+- **React.js** (Antarmuka Utama)
+- **Vite** (Build Tool yang super cepat)
+- **Tailwind CSS** (Styling & animasi murni)
+- **CodeMirror 6** (Code Editor Component)
+- **HTML5 Canvas API** (Render Game / Robot)
+- **Web Workers** (Eksekusi Sandboxed Code)
+
+---
+*Dibuat untuk mempermudah belajar coding dasar dengan cara yang menyenangkan.*
